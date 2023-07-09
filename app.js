@@ -14,6 +14,15 @@ app.use((req, res, next) => {
 });
 
 const connection = mysql.createConnection(config);
+
+const query = 'DELETE FROM gallery';
+connection.query(query, (err, result) => {
+    if (err) throw err;
+    console.log('갤러리 테이블이 초기화되었습니다.');
+});
+
+connection.query(query, (err) => {});
+
 // 데이터 삽입 
 app.post('/api/insert', (req, res) => {
     // 클라이언트로부터 전달받은 사용자 정보
